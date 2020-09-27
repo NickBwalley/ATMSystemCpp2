@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include <fstream>
+#include <string>
 using namespace std;
 //function prototypes
 void normalUser();
@@ -31,16 +32,29 @@ int main()
 void normalUser()
 {
     cout << "----------------------------------------------" << endl;
-    cout << "Welcome to Normal User Login Page: " << endl;
-    cout << "Enter Username: " << endl;
+    cout << "Welcome to the Guest Portal: " << endl;
+    cout << "Enter User-name: " << endl;
     cout << "Enter Password: " << endl;
     cout << "----------------------------------------------" << endl;
 }
 void administrator()
 {
+    //variables definition
+    string adminUsername;
+    int adminPassword;
     cout << "----------------------------------------------" << endl;
-    cout << "Welcome to Registration and Deposit Page: " << endl;
-    cout << "Enter Administrator Username: " << endl;
+    cout << "Welcome to Administrator's Portal: " << endl;
+    cout << "Enter Administrator User-name: " << endl;
+    cin >> adminUsername;
     cout << "Enter Administrator Password: " << endl;
-    cout << "----------------------------------------------" << endl;
+    cin >> adminPassword;
+
+    if(adminUsername == "admin" && adminPassword == 1234)
+    {
+        cout << "Correct password!.." << endl;
+    }
+    else{
+        cout << "Incorrect password!.." << endl;
+        system("pause");
+    }
 }

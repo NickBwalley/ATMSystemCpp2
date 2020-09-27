@@ -1,4 +1,6 @@
 # depslib dependency file v1.0
-1601224987 source:c:\users\sally\desktop\bbit_project\atm_system_cpp\main.cpp
+1601225755 source:c:\users\sally\desktop\bbit_project\atm_system_cpp\main.cpp
 	<iostream>
+	<fstream>
+	<string>
 
