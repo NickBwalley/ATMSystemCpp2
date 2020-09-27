@@ -5,7 +5,10 @@ using namespace std;
 //function prototypes
 void normalUser();
 void administrator();
+void guestAccount();
+void adminAccount();
 
+//Main-Method
 int main()
 {
     //variable definition
@@ -28,7 +31,7 @@ int main()
     }
     return 0;
 }
-
+//normalUser Function
 void normalUser()
 {
     //variables definition
@@ -40,8 +43,10 @@ void normalUser()
     cin >> guestUsername;
     cout << "Enter Your Password: " << endl;
     cin >> guestPassword;
+    guestAccount();
 
 }
+//Administrator Function
 void administrator()
 {
     //variables definition
@@ -57,8 +62,11 @@ void administrator()
     if(adminUsername == "admin" && adminPassword == 1234)
     {
         cout << "Correct password!.." << endl;
+        adminAccount();
     }
     else{
         cout << "Incorrect password!.. TRY AGAIN" << endl;
     }
 }
+
+//guestAccount Function
