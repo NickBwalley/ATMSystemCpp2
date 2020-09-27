@@ -31,11 +31,16 @@ int main()
 
 void normalUser()
 {
+    //variables definition
+    string guestUsername;
+    int guestPassword;
     cout << "----------------------------------------------" << endl;
-    cout << "Welcome to the Guest Portal: " << endl;
-    cout << "Enter User-name: " << endl;
-    cout << "Enter Password: " << endl;
-    cout << "----------------------------------------------" << endl;
+    cout << "Welcome to Normal Guest's Portal: " << endl;
+    cout << "Enter Your User-name: " << endl;
+    cin >> guestUsername;
+    cout << "Enter Your Password: " << endl;
+    cin >> guestPassword;
+
 }
 void administrator()
 {
@@ -54,7 +59,6 @@ void administrator()
         cout << "Correct password!.." << endl;
     }
     else{
-        cout << "Incorrect password!.." << endl;
-        system("pause");
+        cout << "Incorrect password!.. TRY AGAIN" << endl;
     }
 }
