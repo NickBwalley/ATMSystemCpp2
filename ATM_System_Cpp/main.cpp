@@ -69,4 +69,11 @@ void administrator()
     }
 }
 
-//guestAccount Function
+//adminAccount Function
+void adminAccount(){
+    cout << "----------------------------------" << endl;
+    cout << "WELCOME ADMIN!.." << endl;
+    cout << "1. Deposit money for Clients!.." << endl;
+    cout << "2. Register New Client!.." << endl;
+    cout << "3. Reset Your Password!.." << endl;
+}
