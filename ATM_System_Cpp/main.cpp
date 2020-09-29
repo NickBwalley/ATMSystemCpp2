@@ -100,6 +100,9 @@ void adminAccount(){
 
     case 2:
         Register();
+        cout << "Successfully Registered!... THANK YOU!.." << endl;
+        cout << "-----------------------------------------------" << endl;
+        goto S;
     case 3:
         cout << "Awesome!.." << endl;
 
