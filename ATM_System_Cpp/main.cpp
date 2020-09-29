@@ -7,7 +7,7 @@ void normalUser();
 void administrator();
 void guestAccount();
 void adminAccount();
-
+void Register();
 //Main-Method
 int main()
 {
@@ -115,6 +115,8 @@ void guestAccount()
 // Administrator register NewUser
 void Register()
 {
+    string user;
+    string pass;
     ifstream file;
     ofstream newuser;
     string username, password, passwordconfirm;
