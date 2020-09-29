@@ -94,11 +94,12 @@ void adminAccount(){
         cin >> deposit;
         amount=amount+deposit;
         cout << "Successfully Deposited Ksh" << amount << endl;
-        cout << "THANK YOU FOR BANKING WITH US \n\n" << endl;
+        cout << "THANK YOU FOR BANKING WITH US!.." << endl;
+        cout << "------------------------------------------------" << endl;
         goto S;
 
     case 2:
-        cout << "Wonderful!.." << endl;
+        Register();
     case 3:
         cout << "Awesome!.." << endl;
 
@@ -109,4 +110,41 @@ void adminAccount(){
 void guestAccount()
 {
     cout << "Welcome to the guest Account!" << endl;
+}
+
+// Administrator register NewUser
+void Register()
+{
+    ifstream file;
+    ofstream newuser;
+    string username, password, passwordconfirm;
+    file.open("users.txt", ios::app);
+    newuser.open("users.txt", ios::app);
+    bool uservalid=false;
+    while (!uservalid)
+    {
+        cout << "Username: ";
+        cin >> username;
+        cout << "Password: ";
+        cin >> password;
+        cout << "Confirm password: ";
+        cin >> passwordconfirm;
+        int m=0;
+        int k=0;
+        while (file >> user >> pass)
+        {
+            m++;
+            if (username!=user)
+                k++;
+        }
+        if (m==k && password==passwordconfirm)
+            uservalid=true;
+        else if (m!=k)
+            cout << "There is already a user with this username." << endl;
+        else
+            cout << "The passwords given do not match." << endl;
+    }
+    newuser << username << " " << password << endl;;
+    file.close();
+    newuser.close();
 }
