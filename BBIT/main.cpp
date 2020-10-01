@@ -299,7 +299,7 @@ void adminsFunct()
 void registerNewClient()
 {
     Register();
-    cout << "\n\nSuccessfully Registered New User!.." << endl;
+    cout << "\n\nUser Successfully Registered!.." << endl;
     cout << "--------------------------------------------" << endl;
     adminsFunct();
 }
