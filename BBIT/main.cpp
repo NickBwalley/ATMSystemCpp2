@@ -7,6 +7,7 @@ using namespace std;
 void guestAccount();
 void adminsAccount();
 void adminsFunct();
+void guestFunct();
 /**********************************/
 //guest userLoginCheck
 string user;
@@ -195,7 +196,7 @@ void guestAccount()
                 cin >> pass;
                 if (LoginCheck(user, pass)!=0){
                     cout << "\nWelcome " << user << "!.." << endl;
-
+                    guestFunct();
                 }
                 else if (loginattempts==3)
                 {
@@ -271,6 +272,18 @@ void adminsFunct()
     int option;
     cout << "\n1. Register New Client" << endl;
     cout << "2. Deposit Client Funds" << endl;
+    cout << "3. Change my Password" << endl;
+    cout << "\n Choose option to proceed: " << endl;
+    cin >> option;
+
+}
+
+//guestFunct implementation
+void guestFunct()
+{
+    int option;
+    cout << "\n1. Check Balance" << endl;
+    cout << "2. Withdraw Cash" << endl;
     cout << "3. Change my Password" << endl;
     cout << "\n Choose option to proceed: " << endl;
     cin >> option;
