@@ -8,6 +8,7 @@ void administrator();
 void guestAccount();
 void adminAccount();
 void Register();
+int LoginCheck (string user, string pass);
 //Main-Method
 int main()
 {
@@ -22,7 +23,7 @@ int main()
     switch(option)
     {
     case 1:
-        normalUser();
+        guestAccount();
         break;
     case 2:
         administrator();
@@ -32,23 +33,72 @@ int main()
         goto S;
     }
     return 0;
-    getchar();
-}
-//normalUser Function
-void normalUser()
-{
-    //variables definition
-    string guestUsername;
-    int guestPassword;
-    cout << "----------------------------------------------" << endl;
-    cout << "Welcome to Normal Guest's Portal: " << endl;
-    cout << "Enter Your User-name: " << endl;
-    cin >> guestUsername;
-    cout << "Enter Your Password: " << endl;
-    cin >> guestPassword;
-    guestAccount();
 
 }
+string user;
+string pass;
+
+int LoginCheck (string user, string pass)
+{
+    ifstream file;
+    string username, password;
+    int n=0;
+    file.open("users.txt");
+    if (file.is_open())
+    {
+        while (!file.eof())
+        {
+            file >> username >> password;
+            n++;
+            if (user==username && pass==password)
+                return n;
+        }
+    }
+    else
+    {
+        cout << "file not open" << endl;
+    }
+
+}
+//normalUser Function
+void guestAccount()
+{
+    int loginattempts=0;
+    ifstream userfile;
+    userfile.open("users.txt");
+    string userset, passset;
+    if (!userfile.is_open())
+    {
+        cout << "file not found" << endl;
+    }
+    else
+    {
+
+            while (LoginCheck(user, pass)==0)
+            {
+                loginattempts++;
+                cout << "Username: ";
+                cin >> user;
+                cout << "Password: ";
+                cin >> pass;
+                if (LoginCheck(user, pass)!=0)
+                    cout << "Welcome " << user << "." << endl;
+                else if (loginattempts==3)
+                {
+                    cout << "Maximum login attempts exceeded." << endl;
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid username/password combination" << endl;
+                }
+            }
+            userfile.close();
+
+
+}
+}
+
 //Administrator Function
 void administrator()
 {
@@ -56,8 +106,9 @@ void administrator()
     string adminUsername;
     int adminPassword;
     S:
-        cout << "----------------------------------------------" << endl;
+        cout << "\n----------------------------------------------" << endl;
         cout << "Welcome to Administrator's Portal: " << endl;
+        cout << "----------------------------------------------" << endl;
         cout << "Enter Administrator User-name: " << endl;
         cin >> adminUsername;
         cout << "Enter Administrator Password: " << endl;
@@ -79,9 +130,11 @@ void adminAccount(){
     int option;
     float deposit;
     float amount = 0;
-    cout << "----------------------------------" << endl;
+
      S:
+        cout << "\n-----------------------------------" << endl;
         cout << "WELCOME ADMIN!.." << endl;
+        cout << "-----------------------------------" << endl;
         cout << "1. Deposit money for Clients!.." << endl;
         cout << "2. Register New Client!.." << endl;
         cout << "3. Reset Your Password!.." << endl;
@@ -95,7 +148,7 @@ void adminAccount(){
         cin >> deposit;
         amount=amount+deposit;
         cout << "Successfully Deposited Ksh" << amount << endl;
-        cout << "THANK YOU FOR BANKING WITH US!.." << endl;
+        cout << endl;
         cout << "------------------------------------------------" << endl;
         cout << endl;
         goto S;
@@ -110,10 +163,10 @@ void adminAccount(){
         cout << "Awesome!.." << endl;
         goto S;
     case 4:
-        cout << "THANK YOU FOR BANKING WITH US!.." << endl;
+        cout << "\nTHANK YOU FOR BANKING WITH US!.." << endl;
         cout << "------------------------------------------------" << endl;
         cout << endl;
-        goto S;
+        break;
 
     default:
         cout << "Invalid Choice PLEASE TRY AGAIN!.." << endl;
@@ -121,12 +174,6 @@ void adminAccount(){
         goto S;
 
     }
-}
-
-//guestAccount function
-void guestAccount()
-{
-    cout << "Welcome to the guest Account!" << endl;
 }
 
 // Administrator register NewUser
