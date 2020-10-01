@@ -106,15 +106,15 @@ void adminAccount(){
         goto S;
     case 3:
         cout << "Awesome!.." << endl;
+        goto S;
     case 4:
         cout << "THANK YOU FOR BANKING WITH US!.." << endl;
         cout << "------------------------------------------------" << endl;
-        break;
-        system("pause");
+        goto S;
+
     default:
-        cout << "Invalid Choice TRY AGAIN!.." << endl;
-        break;
-        system("pause");
+        cout << "Invalid Choice PLEASE TRY AGAIN!.." << endl;
+        goto S;
 
     }
 }
