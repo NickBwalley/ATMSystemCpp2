@@ -8,6 +8,9 @@ void guestAccount();
 void adminsAccount();
 void adminsFunct();
 void guestFunct();
+void registerNewClient();
+void depositClientFunds();
+void changeAdminsPassword();
 /**********************************/
 //guest userLoginCheck
 string user;
@@ -239,9 +242,9 @@ void adminsAccount()
             while (LoginCheck2(user2, pass2)==0)
             {
                 loginattempts++;
-                cout << "Enter your Username: ";
+                cout << "Enter Admins Username: ";
                 cin >> user;
-                cout << "Enter your Password: ";
+                cout << "Enter Admins Password: ";
                 cin >> pass;
                 if (LoginCheck2(user2, pass2)!=0)
                 {
@@ -258,7 +261,7 @@ void adminsAccount()
                     cout << "Invalid username/password combination" << endl;
                 }
             }
-            exit(0);
+
 
         }
 
@@ -270,14 +273,37 @@ void adminsAccount()
 void adminsFunct()
 {
     int option;
-    cout << "\n1. Register New Client" << endl;
-    cout << "2. Deposit Client Funds" << endl;
-    cout << "3. Change my Password" << endl;
-    cout << "\n Choose option to proceed: " << endl;
-    cin >> option;
+    A:
+        cout << "\n1. Register New Client" << endl;
+        cout << "2. Deposit Client Funds" << endl;
+        cout << "3. Change my Password" << endl;
+        cout << "\n Choose option to proceed: " << endl;
+        cin >> option;
+    switch(option)
+    {
+    case 1:
+        registerNewClient();
+        break;
+    case 2:
+        //depositClientFunds();
+        break;
+    case 3:
+        //changeAdminsPassword();
+        break;
+    default:
+        cout << "\nInvalid Input PLEASE TRY AGAIN!.." << endl;
+        goto A;
+    }
 
 }
-
+void registerNewClient()
+{
+    Register();
+    cout << "\n\nSuccessfully Registered New User!.." << endl;
+    cout << "--------------------------------------------" << endl;
+    adminsFunct();
+}
+/**********************GUEST ACCOUNT *******************************/
 //guestFunct implementation
 void guestFunct()
 {
