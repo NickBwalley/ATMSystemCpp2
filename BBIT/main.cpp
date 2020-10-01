@@ -151,7 +151,7 @@ void guestAccount()
     else
     {
         cout << "\n--------------------------" << endl;
-        cout << " WELCOME GUEST!.." << endl;
+        cout << " WELCOME TO THE GUESTS ACCOUNT!.." << endl;
         cout << "Press 1 to login to your account!.." << endl;
         int option;
         cin >> option;
