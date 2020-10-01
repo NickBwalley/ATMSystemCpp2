@@ -288,7 +288,7 @@ void adminsFunct()
         //depositClientFunds();
         break;
     case 3:
-        //changeAdminsPassword();
+        changeAdminsPassword();
         break;
     default:
         cout << "\nInvalid Input PLEASE TRY AGAIN!.." << endl;
@@ -302,6 +302,38 @@ void registerNewClient()
     cout << "\n\nUser Successfully Registered!.." << endl;
     cout << "--------------------------------------------" << endl;
     adminsFunct();
+}
+void changeAdminsPassword()
+{
+    string strSearch; //string to search
+    string strReplace; //string to replace
+    cout << "\n--------------------------------" << endl;
+    cout << "ADMINS PASSWORD RESET!.." << endl;;
+    cout << "Enter Admin's Username: " << endl;;
+    cin >> strSearch;
+    cout << "Enter New Admin's Password: " << endl;
+    cin >> strReplace;
+    ifstream filein("admin.txt"); //File to read from
+    ofstream fileout("temp.txt"); //Temporary file
+     if(!filein || !fileout) //if both files are not available
+	{
+        cout << "Error opening files!" << endl;
+        exit(1);
+    }
+    string strTemp;
+    bool found = false;
+    while(filein >> strTemp) // it will check line from admin to strTemp string
+    {
+        if(strTemp == strSearch) // if your word found then replace
+        {
+            strTemp = strReplace;
+            //found = true
+        }
+        strTemp += "\n";
+        fileout << strTemp; //output everything to fileout (admin.txt)
+    }
+
+
 }
 /**********************GUEST ACCOUNT *******************************/
 //guestFunct implementation
