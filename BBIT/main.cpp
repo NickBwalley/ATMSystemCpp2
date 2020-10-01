@@ -150,8 +150,9 @@ void guestAccount()
     }
     else
     {
-            cout << "\n WELCOME GUEST!.." << endl;
-    cout << "1.Login \n2.Register" << endl;
+        cout << "\n--------------------------" << endl;
+        cout << " WELCOME GUEST!.." << endl;
+        cout << "Press 1 to login to your account!.." << endl;
         int option;
         cin >> option;
         if (option==1)
@@ -159,12 +160,12 @@ void guestAccount()
             while (LoginCheck(user, pass)==0)
             {
                 loginattempts++;
-                cout << "Username: ";
+                cout << "Enter your Username: ";
                 cin >> user;
-                cout << "Password: ";
+                cout << "Enter your Password: ";
                 cin >> pass;
                 if (LoginCheck(user, pass)!=0)
-                    cout << "Welcome " << user << "." << endl;
+                    cout << "\nWelcome " << user << "!.." << endl;
                 else if (loginattempts==3)
                 {
                     cout << "Maximum login attempts exceeded." << endl;
@@ -175,6 +176,7 @@ void guestAccount()
                     cout << "Invalid username/password combination" << endl;
                 }
             }
+            exit(0);
 
         }
 
