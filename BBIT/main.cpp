@@ -5,8 +5,9 @@
 using namespace std;
 //function prototype
 void guestAccount();
-void administrator();
-
+void adminsAccount();
+/**********************************/
+//guest userLoginCheck
 string user;
 string pass;
 
@@ -16,6 +17,33 @@ int LoginCheck (string user, string pass)
     string username, password;
     int n=0;
     file.open("users.txt");
+    if (file.is_open())
+    {
+        while (!file.eof())
+        {
+            file >> username >> password;
+            n++;
+            if (user==username && pass==password)
+                return n;
+        }
+    }
+    else
+    {
+        cout << "file not open" << endl;
+    }
+    return 0;
+}
+
+//adminsLoginCheck
+string user2;
+string pass2;
+
+int LoginCheck2 (string user2, string pass2)
+{
+    ifstream file;
+    string username, password;
+    int n=0;
+    file.open("admin.txt");
     if (file.is_open())
     {
         while (!file.eof())
@@ -95,7 +123,7 @@ int main()
         guestAccount();
         break;
     case 2:
-        //administrator();
+        adminsAccount();
         break;
     default:
         cout << "Invalid Input TRY AGAIN with 1 or 2 " << endl;
@@ -150,7 +178,7 @@ void guestAccount()
     }
     else
     {
-        cout << "\n--------------------------" << endl;
+        cout << "\n-----------------------------------" << endl;
         cout << " WELCOME TO THE GUESTS ACCOUNT!.." << endl;
         cout << "Press 1 to login to your account!.." << endl;
         int option;
@@ -181,5 +209,52 @@ void guestAccount()
         }
 
 
+    }
 }
+
+//function administrator account
+void adminsAccount()
+{
+    int loginattempts=0;
+    ifstream userfile;
+    userfile.open("admin.txt");
+    string userset, passset;
+    if (!userfile.is_open())
+    {
+        cout << "file not found" << endl;
+    }
+    else
+    {
+        cout << "\n--------------------------------------------" << endl;
+        cout << " WELCOME TO THE ADMINISTRATOR'S ACCOUNT!.." << endl;
+        cout << "Press 1 to login as an ADMIN!.." << endl;
+        int option;
+        cin >> option;
+        if (option==1)
+        {
+            while (LoginCheck2(user2, pass2)==0)
+            {
+                loginattempts++;
+                cout << "Enter your Username: ";
+                cin >> user;
+                cout << "Enter your Password: ";
+                cin >> pass;
+                if (LoginCheck2(user2, pass2)!=0)
+                    cout << "\nWelcome " << user << "!.." << endl;
+                else if (loginattempts==3)
+                {
+                    cout << "Maximum login attempts exceeded!..PLEASE TRY AGAIN LATER!..." << endl;
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid username/password combination" << endl;
+                }
+            }
+            exit(0);
+
+        }
+
+
+    }
 }
