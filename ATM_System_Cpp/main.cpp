@@ -85,6 +85,7 @@ void adminAccount(){
         cout << "1. Deposit money for Clients!.." << endl;
         cout << "2. Register New Client!.." << endl;
         cout << "3. Reset Your Password!.." << endl;
+        cout << "4. Exit" << endl;
         cout << "\n Enter Option to Proceed: " << endl;
         cin >> option;
     switch(option)
@@ -105,6 +106,15 @@ void adminAccount(){
         goto S;
     case 3:
         cout << "Awesome!.." << endl;
+    case 4:
+        cout << "THANK YOU FOR BANKING WITH US!.." << endl;
+        cout << "------------------------------------------------" << endl;
+        break;
+        system("pause");
+    default:
+        cout << "Invalid Choice TRY AGAIN!.." << endl;
+        break;
+        system("pause");
 
     }
 }
@@ -120,6 +130,7 @@ void Register()
 {
     string user;
     string pass;
+    int deposit;
     ifstream file;
     ofstream newuser;
     string username, password, passwordconfirm;
@@ -134,9 +145,12 @@ void Register()
         cin >> password;
         cout << "Confirm password: ";
         cin >> passwordconfirm;
+        cout << "Deposit Amount: ";
+        cin >> deposit;
+
         int m=0;
         int k=0;
-        while (file >> user >> pass)
+        while (file >> user >> pass >> deposit)
         {
             m++;
             if (username!=user)
@@ -149,7 +163,7 @@ void Register()
         else
             cout << "The passwords given do not match." << endl;
     }
-    newuser << username << " " << password << endl;;
+    newuser << username << " " << password << " " << deposit << endl;
     file.close();
     newuser.close();
 }
