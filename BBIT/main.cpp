@@ -169,55 +169,8 @@ int main()
     }
     int a;
     cin >> a; // this has no purpose other than stopping the program closing automatically
+
     return 0;
-}
-
-void guestAccount()
-{
-    int loginattempts=0;
-    ifstream userfile;
-    userfile.open("users.txt");
-    string userset, passset;
-    if (!userfile.is_open())
-    {
-        cout << "file not found" << endl;
-    }
-    else
-    {
-        cout << "\n-----------------------------------" << endl;
-        cout << " WELCOME TO THE GUESTS ACCOUNT!.." << endl;
-        cout << "Press 1 to login to your account!.." << endl;
-        int option;
-        cin >> option;
-        if (option==1)
-        {
-            while (LoginCheck(user, pass)==0)
-            {
-                loginattempts++;
-                cout << "Enter your Username: ";
-                cin >> user;
-                cout << "Enter your Password: ";
-                cin >> pass;
-                if (LoginCheck(user, pass)!=0){
-                    cout << "\nWelcome " << user << "!.." << endl;
-                    guestFunct();
-                }
-                else if (loginattempts==3)
-                {
-                    cout << "Maximum login attempts exceeded!..PLEASE TRY AGAIN LATER!..." << endl;
-                    break;
-                }
-                else
-                {
-                    cout << "Invalid username/password combination" << endl;
-                }
-            }
-            exit(0);
-
-        }
-
-
-    }
 }
 
 //function administrator account
@@ -340,6 +293,53 @@ void changeAdminsPassword()
 
 }
 /**********************GUEST ACCOUNT *******************************/
+void guestAccount()
+{
+    int loginattempts=0;
+    ifstream userfile;
+    userfile.open("users.txt");
+    string userset, passset;
+    if (!userfile.is_open())
+    {
+        cout << "file not found" << endl;
+    }
+    else
+    {
+        cout << "\n-----------------------------------" << endl;
+        cout << " WELCOME TO THE GUESTS ACCOUNT!.." << endl;
+        cout << "Press 1 to login to your account!.." << endl;
+        int option;
+        cin >> option;
+        if (option==1)
+        {
+            while (LoginCheck(user, pass)==0)
+            {
+                loginattempts++;
+                cout << "Enter your Username: ";
+                cin >> user;
+                cout << "Enter your Password: ";
+                cin >> pass;
+                if (LoginCheck(user, pass)!=0){
+                    cout << "\nWelcome " << user << "!.." << endl;
+                    guestFunct();
+                }
+                else if (loginattempts==3)
+                {
+                    cout << "Maximum login attempts exceeded!..PLEASE TRY AGAIN LATER!..." << endl;
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid username/password combination" << endl;
+                }
+            }
+            exit(0);
+
+        }
+
+
+    }
+}
 //guestFunct implementation
 void guestFunct()
 {
@@ -352,6 +352,7 @@ void guestFunct()
     cin >> option;
 
 }
+
 void exit()
 {
     cout << "\n\nTHANK YOU FOR BANKING WITH US!.." << endl;
