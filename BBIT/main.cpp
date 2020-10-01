@@ -290,7 +290,7 @@ void adminsFunct()
         //depositClientFunds();
         break;
     case 3:
-        changeAdminsPassword();
+        //changeAdminsPassword();
         break;
     case 4:
         exit();
@@ -347,6 +347,7 @@ void guestFunct()
     cout << "\n1. Check Balance" << endl;
     cout << "2. Withdraw Cash" << endl;
     cout << "3. Change my Password" << endl;
+    cout << "4. Exit" << endl;
     cout << "\n Choose option to proceed: " << endl;
     cin >> option;
 
