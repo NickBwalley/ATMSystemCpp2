@@ -97,12 +97,14 @@ void adminAccount(){
         cout << "Successfully Deposited Ksh" << amount << endl;
         cout << "THANK YOU FOR BANKING WITH US!.." << endl;
         cout << "------------------------------------------------" << endl;
+        cout << endl;
         goto S;
 
     case 2:
         Register();
         cout << "Successfully Registered!... THANK YOU!.." << endl;
         cout << "-----------------------------------------------" << endl;
+        cout << endl;
         goto S;
     case 3:
         cout << "Awesome!.." << endl;
@@ -110,10 +112,12 @@ void adminAccount(){
     case 4:
         cout << "THANK YOU FOR BANKING WITH US!.." << endl;
         cout << "------------------------------------------------" << endl;
+        cout << endl;
         goto S;
 
     default:
         cout << "Invalid Choice PLEASE TRY AGAIN!.." << endl;
+        cout << endl;
         goto S;
 
     }
