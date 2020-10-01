@@ -11,6 +11,7 @@ void guestFunct();
 void registerNewClient();
 void depositClientFunds();
 void changeAdminsPassword();
+void exit();
 /**********************************/
 //guest userLoginCheck
 string user;
@@ -277,6 +278,7 @@ void adminsFunct()
         cout << "\n1. Register New Client" << endl;
         cout << "2. Deposit Client Funds" << endl;
         cout << "3. Change my Password" << endl;
+        cout << "4. Exit" << endl;
         cout << "\n Choose option to proceed: " << endl;
         cin >> option;
     switch(option)
@@ -290,6 +292,8 @@ void adminsFunct()
     case 3:
         changeAdminsPassword();
         break;
+    case 4:
+        exit();
     default:
         cout << "\nInvalid Input PLEASE TRY AGAIN!.." << endl;
         goto A;
@@ -346,4 +350,9 @@ void guestFunct()
     cout << "\n Choose option to proceed: " << endl;
     cin >> option;
 
+}
+void exit()
+{
+    cout << "\n\nTHANK YOU FOR BANKING WITH US!.." << endl;
+    exit(0);
 }
