@@ -6,6 +6,7 @@ using namespace std;
 //function prototype
 void guestAccount();
 void adminsAccount();
+void adminsFunct();
 /**********************************/
 //guest userLoginCheck
 string user;
@@ -192,8 +193,10 @@ void guestAccount()
                 cin >> user;
                 cout << "Enter your Password: ";
                 cin >> pass;
-                if (LoginCheck(user, pass)!=0)
+                if (LoginCheck(user, pass)!=0){
                     cout << "\nWelcome " << user << "!.." << endl;
+
+                }
                 else if (loginattempts==3)
                 {
                     cout << "Maximum login attempts exceeded!..PLEASE TRY AGAIN LATER!..." << endl;
@@ -240,7 +243,10 @@ void adminsAccount()
                 cout << "Enter your Password: ";
                 cin >> pass;
                 if (LoginCheck2(user2, pass2)!=0)
+                {
                     cout << "\nWelcome " << user << "!.." << endl;
+                    adminsFunct();
+                }
                 else if (loginattempts==3)
                 {
                     cout << "Maximum login attempts exceeded!..PLEASE TRY AGAIN LATER!..." << endl;
@@ -257,4 +263,16 @@ void adminsAccount()
 
 
     }
+}
+
+//adminsFunct implementation
+void adminsFunct()
+{
+    int option;
+    cout << "\n1. Register New Client" << endl;
+    cout << "2. Deposit Client Funds" << endl;
+    cout << "3. Change my Password" << endl;
+    cout << "\n Choose option to proceed: " << endl;
+    cin >> option;
+
 }
