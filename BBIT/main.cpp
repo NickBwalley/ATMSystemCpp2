@@ -3,6 +3,9 @@
 #include <string>
 
 using namespace std;
+//function prototype
+void guestAccount();
+void administrator();
 
 string user;
 string pass;
@@ -78,8 +81,29 @@ int main()
     }
     else
     {
+        //variable definition
+    int option;
+    S:
+        cout << "*****WELCOME TO BBIT2020 E-CASH SERVICES*****" << endl;
+        cout << "1. Normal User Login: " << endl;
+        cout << "2. Administrator Login: " << endl;
+        cout << "Choose an Option to proceed: " << endl;
+        cin >> option;
+    switch(option)
+    {
+    case 1:
+        guestAccount();
+        break;
+    case 2:
+        //administrator();
+        break;
+    default:
+        cout << "Invalid Input TRY AGAIN with 1 or 2 " << endl;
+        goto S;
+    }
+
         cout << "1.Login \n2.Register" << endl;
-        int option;
+        //int option;
         cin >> option;
         if (option==1)
         {
@@ -112,4 +136,47 @@ int main()
     int a;
     cin >> a; // this has no purpose other than stopping the program closing automatically
     return 0;
+}
+
+void guestAccount()
+{
+    int loginattempts=0;
+    ifstream userfile;
+    userfile.open("users.txt");
+    string userset, passset;
+    if (!userfile.is_open())
+    {
+        cout << "file not found" << endl;
+    }
+    else
+    {
+            cout << "\n WELCOME GUEST!.." << endl;
+    cout << "1.Login \n2.Register" << endl;
+        int option;
+        cin >> option;
+        if (option==1)
+        {
+            while (LoginCheck(user, pass)==0)
+            {
+                loginattempts++;
+                cout << "Username: ";
+                cin >> user;
+                cout << "Password: ";
+                cin >> pass;
+                if (LoginCheck(user, pass)!=0)
+                    cout << "Welcome " << user << "." << endl;
+                else if (loginattempts==3)
+                {
+                    cout << "Maximum login attempts exceeded." << endl;
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid username/password combination" << endl;
+                }
+            }
+    }
+
+
+}
 }
