@@ -243,8 +243,10 @@ void adminsFunct()
         //depositClientFunds();
         break;
     case 3:
-        //changeAdminsPassword();
-        break;
+        changeAdminsPassword();
+        cout << "\n PASSWORD SUCCESSFULLY CHANGED!.." << endl;
+        cout << "-------------------------------------" << endl;
+        exit(0);
     case 4:
         exit();
     default:
@@ -262,34 +264,32 @@ void registerNewClient()
 }
 void changeAdminsPassword()
 {
-    string strSearch; //string to search
-    string strReplace; //string to replace
-    cout << "\n--------------------------------" << endl;
-    cout << "ADMINS PASSWORD RESET!.." << endl;;
-    cout << "Enter Admin's Username: " << endl;;
-    cin >> strSearch;
-    cout << "Enter New Admin's Password: " << endl;
-    cin >> strReplace;
+    string strReplace = "1234"; //String to search previous password
+    string strNew;	//String To replace
+    cout << "------------------------------" << endl;
+    cout << "ADMIN'S PASSWORD RESET!.." << endl;
+    cout << "Enter New Admin's Password: ";
+    cin >> strNew;
     ifstream filein("admin.txt"); //File to read from
     ofstream fileout("temp.txt"); //Temporary file
-     if(!filein || !fileout) //if both files are not available
+    if(!filein || !fileout) //if both files are not available
 	{
         cout << "Error opening files!" << endl;
         exit(1);
     }
     string strTemp;
-    bool found = false;
-    while(filein >> strTemp) // it will check line from admin to strTemp string
+    //bool found = false;
+ while(filein >> strTemp)//it will check line from test to strTemp string
     {
-        if(strTemp == strSearch) // if your word found then replace
-        {
-            strTemp = strReplace;
-            //found = true
+        if(strTemp == strReplace)//if your word found then replace
+		{
+            strTemp = strNew;
+            //found = true;
         }
-        strTemp += "\n";
-        fileout << strTemp; //output everything to fileout (admin.txt)
+        strTemp += " ";
+        fileout << strTemp;//output everything to fileout(temp.txt)
+        //if(found) break;
     }
-
 
 }
 /**********************GUEST ACCOUNT *******************************/
