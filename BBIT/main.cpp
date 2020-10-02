@@ -1,3 +1,9 @@
+/*********************************************************
+THIS CODE WAS IMPLEMENTED BY NICK BWALLEY
+0N DATE: FRIDAY 10TH OCTOBER 2020
+THEME: A CPP CONSOLE APPLICATION FOR AN ATM SERVICE
+**********************************************************/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -72,6 +78,7 @@ void Register()
     ifstream file;
     ofstream newuser;
     string username, password, passwordconfirm;
+    float deposit = 0;
     file.open("users.txt", ios::app);
     newuser.open("users.txt", ios::app);
     bool uservalid=false;
@@ -97,8 +104,8 @@ void Register()
             cout << "There is already a user with this username." << endl;
         else
             cout << "The passwords given do not match." << endl;
+    newuser << username << " " << password << " " << deposit << endl;;
     }
-    newuser << username << " " << password << endl;;
     file.close();
     newuser.close();
 }
@@ -240,6 +247,7 @@ void adminsFunct()
         registerNewClient();
         break;
     case 2:
+
         //depositClientFunds();
         break;
     case 3:
@@ -258,13 +266,17 @@ void adminsFunct()
 void registerNewClient()
 {
     Register();
-    cout << "\n\nUser Successfully Registered!.." << endl;
+    cout << "\n\nNEW USER SUCCESSFULLY REGISTERED!.." << endl;
     cout << "--------------------------------------------" << endl;
     adminsFunct();
 }
+void depositClientFunds()
+{
+
+}
 void changeAdminsPassword()
 {
-    string strReplace = "1234"; //String to search previous password
+    string strReplace = "1234"; //String to search previous password(default password)
     string strNew;	//String To replace
     cout << "------------------------------" << endl;
     cout << "ADMIN'S PASSWORD RESET!.." << endl;
